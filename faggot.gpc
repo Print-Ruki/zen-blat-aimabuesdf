@@ -3,15 +3,13 @@
 define INTERACTION_MENU = XB1_VIEW;
 define DPAD_DOWN = XB1_DOWN;
 define DPAD_UP = XB1_UP;
-define DPAD_RIGHT = XB1_RIGHT;
-define DPAD_LEFT = XB1_LEFT;
 define A_BTN = XB1_A;
-define LB_BTN = XB1_LB;
+define LT_BTN = XB1_LT;
 
 int ammoBuyTriggered = FALSE;
 
 main {
-  // Trigger ammo buy with LB + DPad Down
+  // Trigger when LT + D-Pad Down is pressed
   if(get_val(LT_BTN) && event_press(DPAD_DOWN)) {
     ammoBuyTriggered = TRUE;
   }
