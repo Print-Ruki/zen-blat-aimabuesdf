@@ -48,19 +48,6 @@ combo BuyAmmo {
   set_val(INTERACTION_MENU, 100);
   wait(800);
 
-  set_val(DPAD_UP, 100);
-  wait(100);
-  set_val(DPAD_UP, 0);
-  wait(100);
-  set_val(DPAD_UP, 100);
-  wait(100);
-  set_val(DPAD_UP, 0);
-  wait(100);
-  set_val(DPAD_UP, 100);
-  wait(100);
-  set_val(DPAD_UP, 0);
-  wait(150);
-
   combo_run(RepeatDown5);
 
   set_val(A_BTN, 100);
