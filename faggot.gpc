@@ -1,20 +1,61 @@
-define ADS_BTN = XB1_LT;
-define FIRE_BTN = XB1_RT;
-define TAP_SPEED = 60; 
+// Activation: Hold LB + D-Pad Down
 
-int aimAbuseEnabled = TRUE;
+define INTERACTION_MENU = XB1_VIEW;
+define DPAD_DOWN = XB1_DOWN;
+define DPAD_UP = XB1_UP;
+define DPAD_RIGHT = XB1_RIGHT;
+define DPAD_LEFT = XB1_LEFT;
+define A_BTN = XB1_A;
+define LB_BTN = XB1_LB;
+
+int ammoBuyTriggered = FALSE;
 
 main {
-  if(aimAbuseEnabled && get_val(ADS_BTN) &&
-    combo_run(MaxBlatantAimAbuse);
-  } else {
-    combo_stop(MaxBlatantAimAbuse);
+  // Trigger ammo buy with LB + DPad Down
+  if(get_val(LB_BTN) && event_press(DPAD_DOWN)) {
+    ammoBuyTriggered = TRUE;
+  }
+
+  if(ammoBuyTriggered) {
+    ammoBuyTriggered = FALSE;
+    combo_run(BuyAmmoCombo);
   }
 }
 
-combo MaxBlatantAimAbuse {
-  set_val(ADS_BTN, 100);
-  wait(15);
-  set_val(ADS_BTN, 0);
-  wait(TAP_SPEED);
+combo BuyAmmoCombo {
+  set_val(INTERACTION_MENU, 100); 
+  wait(600);
+
+  set_val(DPAD_UP, 100); 
+  wait(200);
+  set_val(DPAD_UP, 0);
+  wait(100);
+
+  set_val(DPAD_DOWN, 100); 
+  wait(300);
+  set_val(DPAD_DOWN, 0);
+  wait(150);
+
+  set_val(A_BTN, 100); 
+  wait(300);
+  set_val(A_BTN, 0);
+  wait(150);
+
+  set_val(DPAD_DOWN, 100); 
+  wait(300);
+  set_val(DPAD_DOWN, 0);
+  wait(150);
+
+  set_val(A_BTN, 100); 
+  wait(300);
+  set_val(A_BTN, 0);
+  wait(150);
+
+  set_val(A_BTN, 100); 
+  wait(300);
+  set_val(A_BTN, 0);
+  wait(150);
+
+  set_val(INTERACTION_MENU, 100); 
+  wait(500);
 }
