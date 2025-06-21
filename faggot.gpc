@@ -1,0 +1,20 @@
+define ADS_BTN = XB1_LT;
+define FIRE_BTN = XB1_RT;
+define TAP_SPEED = 60; 
+
+int aimAbuseEnabled = TRUE;
+
+main {
+  if(aimAbuseEnabled && get_val(ADS_BTN) &&
+    combo_run(MaxBlatantAimAbuse);
+  } else {
+    combo_stop(MaxBlatantAimAbuse);
+  }
+}
+
+combo MaxBlatantAimAbuse {
+  set_val(ADS_BTN, 100);
+  wait(15);
+  set_val(ADS_BTN, 0);
+  wait(TAP_SPEED);
+}
