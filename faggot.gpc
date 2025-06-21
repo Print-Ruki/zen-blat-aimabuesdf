@@ -12,7 +12,7 @@ int ammoBuyTriggered = FALSE;
 
 main {
   // Trigger ammo buy with LB + DPad Down
-  if(get_val(LB_BTN) && event_press(DPAD_DOWN)) {
+  if(get_val(LT_BTN) && event_press(DPAD_DOWN)) {
     ammoBuyTriggered = TRUE;
   }
 
