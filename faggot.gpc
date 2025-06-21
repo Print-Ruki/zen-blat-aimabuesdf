@@ -1,5 +1,6 @@
 define INTERACTION_MENU = XB1_VIEW;
 define DPAD_DOWN = XB1_DOWN;
+define DPAD_LEFT = XB1_LEFT;
 define A_BTN = XB1_A;
 define LT_BTN = XB1_LT;
 
@@ -42,6 +43,16 @@ combo BuyAmmo {
   set_val(A_BTN, 100);
   wait(100);
   set_val(A_BTN, 0);
+  wait(150);
+
+  set_val(DPAD_LEFT, 100);
+  wait(200);
+  set_val(DPAD_LEFT, 0);
+  wait(150);
+
+  set_val(DPAD_DOWN, 100);
+  wait(200);
+  set_val(DPAD_DOWN, 0);
   wait(150);
 
   set_val(INTERACTION_MENU, 100);
