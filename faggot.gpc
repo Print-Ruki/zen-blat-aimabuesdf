@@ -49,6 +49,7 @@ combo BuyAmmo {
   wait(100);
   set_val(A_BTN, 0);
   wait(150);
+
   set_val(A_BTN, 100);
   wait(100);
   set_val(A_BTN, 0);
