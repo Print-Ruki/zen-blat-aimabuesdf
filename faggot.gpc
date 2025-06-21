@@ -1,59 +1,71 @@
-// Activation: Hold LB + D-Pad Down
-
 define INTERACTION_MENU = XB1_VIEW;
 define DPAD_DOWN = XB1_DOWN;
 define DPAD_UP = XB1_UP;
 define A_BTN = XB1_A;
 define LT_BTN = XB1_LT;
 
-int ammoBuyTriggered = FALSE;
+int triggerAmmoBuy = FALSE;
 
 main {
-  // Trigger when LT + D-Pad Down is pressed
   if(get_val(LT_BTN) && event_press(DPAD_DOWN)) {
-    ammoBuyTriggered = TRUE;
+    triggerAmmoBuy = TRUE;
   }
 
-  if(ammoBuyTriggered) {
-    ammoBuyTriggered = FALSE;
-    combo_run(BuyAmmoCombo);
+  if(triggerAmmoBuy) {
+    triggerAmmoBuy = FALSE;
+    combo_run(BuyAmmo);
   }
 }
 
-combo BuyAmmoCombo {
-  set_val(INTERACTION_MENU, 100); 
-  wait(600);
+combo BuyAmmo {
+  set_val(INTERACTION_MENU, 100);
+  wait(800);
 
-  set_val(DPAD_UP, 100); 
-  wait(200);
+  set_val(DPAD_UP, 100);
+  wait(100);
   set_val(DPAD_UP, 0);
   wait(100);
+  set_val(DPAD_UP, 100);
+  wait(100);
+  set_val(DPAD_UP, 0);
+  wait(100);
+  set_val(DPAD_UP, 100);
+  wait(100);
+  set_val(DPAD_UP, 0);
+  wait(150);
 
-  set_val(DPAD_DOWN, 100); 
-  wait(300);
+  repeat(5);
+
+  set_val(A_BTN, 100);
+  wait(200);
+  set_val(A_BTN, 0);
+  wait(200);
+
+  set_val(DPAD_DOWN, 100);
+  wait(150);
   set_val(DPAD_DOWN, 0);
   wait(150);
 
-  set_val(A_BTN, 100); 
+  set_val(A_BTN, 100);
+  wait(200);
+  set_val(A_BTN, 0);
+  wait(200);
+
+  set_val(A_BTN, 100);
   wait(300);
   set_val(A_BTN, 0);
   wait(150);
 
-  set_val(DPAD_DOWN, 100); 
-  wait(300);
-  set_val(DPAD_DOWN, 0);
-  wait(150);
+  set_val(INTERACTION_MENU, 100);
+  wait(400);
+}
 
-  set_val(A_BTN, 100); 
-  wait(300);
-  set_val(A_BTN, 0);
-  wait(150);
-
-  set_val(A_BTN, 100); 
-  wait(300);
-  set_val(A_BTN, 0);
-  wait(150);
-
-  set_val(INTERACTION_MENU, 100); 
-  wait(500);
+function repeat(times) {
+  int i;
+  for(i = 0; i < times; i++) {
+    set_val(DPAD_DOWN, 100);
+    wait(150);
+    set_val(DPAD_DOWN, 0);
+    wait(100);
+  }
 }
