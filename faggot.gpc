@@ -1,20 +1,58 @@
 define INTERACTION_MENU = XB1_VIEW;
 define DPAD_DOWN = XB1_DOWN;
 define DPAD_LEFT = XB1_LEFT;
+define DPAD_RIGHT = XB1_RIGHT;
 define A_BTN = XB1_A;
 define LT_BTN = XB1_LT;
 
 int triggerAmmoBuy = FALSE;
+int triggerBSTBuy = FALSE;
 
 main {
   if(get_val(LT_BTN) && event_press(DPAD_DOWN)) {
     triggerAmmoBuy = TRUE;
   }
 
+  if(get_val(LT_BTN) && event_press(DPAD_RIGHT)) {
+    triggerBSTBuy = TRUE;
+  }
+
   if(triggerAmmoBuy) {
     triggerAmmoBuy = FALSE;
     combo_run(BuyAmmo);
   }
+
+  if(triggerBSTBuy) {
+    triggerBSTBuy = FALSE;
+    combo_run(BuyBST);
+  }
+}
+
+combo RepeatDown5 {
+  set_val(DPAD_DOWN, 100);
+  wait(150);
+  set_val(DPAD_DOWN, 0);
+  wait(100);
+
+  set_val(DPAD_DOWN, 100);
+  wait(150);
+  set_val(DPAD_DOWN, 0);
+  wait(100);
+
+  set_val(DPAD_DOWN, 100);
+  wait(150);
+  set_val(DPAD_DOWN, 0);
+  wait(100);
+
+  set_val(DPAD_DOWN, 100);
+  wait(150);
+  set_val(DPAD_DOWN, 0);
+  wait(100);
+
+  set_val(DPAD_DOWN, 100);
+  wait(150);
+  set_val(DPAD_DOWN, 0);
+  wait(100);
 }
 
 combo RepeatDown4 {
@@ -43,13 +81,12 @@ combo BuyAmmo {
   set_val(INTERACTION_MENU, 100);
   wait(800);
 
-  combo_run(RepeatDown4);
+  combo_run(RepeatDown5);
 
   set_val(A_BTN, 100);
   wait(100);
   set_val(A_BTN, 0);
   wait(150);
-
   set_val(A_BTN, 100);
   wait(100);
   set_val(A_BTN, 0);
@@ -63,6 +100,30 @@ combo BuyAmmo {
   set_val(DPAD_DOWN, 100);
   wait(200);
   set_val(DPAD_DOWN, 0);
+  wait(150);
+
+  set_val(INTERACTION_MENU, 100);
+  wait(400);
+}
+
+combo BuyBST {
+  set_val(INTERACTION_MENU, 100);
+  wait(800);
+
+  combo_run(RepeatDown4);
+
+  set_val(A_BTN, 100);
+  wait(150);
+  set_val(A_BTN, 0);
+  wait(150);
+
+  set_val(A_BTN, 100);
+  wait(100);
+  set_val(A_BTN, 0);
+  wait(150);
+  set_val(A_BTN, 100);
+  wait(100);
+  set_val(A_BTN, 0);
   wait(150);
 
   set_val(INTERACTION_MENU, 100);
