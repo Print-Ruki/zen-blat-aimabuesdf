@@ -17,12 +17,7 @@ main {
   }
 }
 
-combo RepeatDown5 {
-  set_val(DPAD_DOWN, 100);
-  wait(150);
-  set_val(DPAD_DOWN, 0);
-  wait(100);
-
+combo RepeatDown4 {
   set_val(DPAD_DOWN, 100);
   wait(150);
   set_val(DPAD_DOWN, 0);
@@ -48,7 +43,7 @@ combo BuyAmmo {
   set_val(INTERACTION_MENU, 100);
   wait(800);
 
-  combo_run(RepeatDown5);
+  combo_run(RepeatDown4);
 
   set_val(A_BTN, 100);
   wait(100);
