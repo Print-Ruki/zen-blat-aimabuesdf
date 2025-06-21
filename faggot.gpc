@@ -1,122 +1,103 @@
 define INTERACTION_MENU = XB1_VIEW;
 define DPAD_DOWN = XB1_DOWN;
+define DPAD_UP = XB1_UP;
 define DPAD_LEFT = XB1_LEFT;
-define DPAD_RIGHT = XB1_RIGHT;
 define A_BTN = XB1_A;
+define B_BTN = XB1_B;
 define LT_BTN = XB1_LT;
+define DPAD_RIGHT = XB1_RIGHT;
 
-int triggerAmmoBuy = FALSE;
 int triggerBSTBuy = FALSE;
+int triggerAmmoBuy = FALSE;
 
 main {
-  if(get_val(LT_BTN) && event_press(DPAD_DOWN)) {
-    triggerAmmoBuy = TRUE;
-  }
-
   if(get_val(LT_BTN) && event_press(DPAD_RIGHT)) {
     triggerBSTBuy = TRUE;
   }
-
-  if(triggerAmmoBuy) {
-    triggerAmmoBuy = FALSE;
-    combo_run(BuyAmmo);
+  if(get_val(LT_BTN) && event_press(DPAD_DOWN)) {
+    triggerAmmoBuy = TRUE;
   }
 
   if(triggerBSTBuy) {
     triggerBSTBuy = FALSE;
     combo_run(BuyBST);
   }
-}
-
-combo RepeatDown5 {
-  set_val(DPAD_DOWN, 100);
-  wait(150);
-  set_val(DPAD_DOWN, 0);
-  wait(100);
-
-  set_val(DPAD_DOWN, 100);
-  wait(150);
-  set_val(DPAD_DOWN, 0);
-  wait(100);
-
-  set_val(DPAD_DOWN, 100);
-  wait(150);
-  set_val(DPAD_DOWN, 0);
-  wait(100);
-
-  set_val(DPAD_DOWN, 100);
-  wait(150);
-  set_val(DPAD_DOWN, 0);
-  wait(100);
-
-  set_val(DPAD_DOWN, 100);
-  wait(150);
-  set_val(DPAD_DOWN, 0);
-  wait(100);
-}
-
-combo RepeatDown4 {
-  set_val(DPAD_DOWN, 100);
-  wait(150);
-  set_val(DPAD_DOWN, 0);
-  wait(100);
-
-  set_val(DPAD_DOWN, 100);
-  wait(150);
-  set_val(DPAD_DOWN, 0);
-  wait(100);
-
-  set_val(DPAD_DOWN, 100);
-  wait(150);
-  set_val(DPAD_DOWN, 0);
-  wait(100);
-
-  set_val(DPAD_DOWN, 100);
-  wait(150);
-  set_val(DPAD_DOWN, 0);
-  wait(100);
-}
-
-combo BuyAmmo {
-  set_val(INTERACTION_MENU, 100);
-  wait(800);
-
-  combo_run(RepeatDown5);
-
-  set_val(A_BTN, 100);
-  wait(100);
-  set_val(A_BTN, 0);
-  wait(150);
-  set_val(A_BTN, 100);
-  wait(100);
-  set_val(A_BTN, 0);
-  wait(150);
-
-  set_val(DPAD_LEFT, 100);
-  wait(200);
-  set_val(DPAD_LEFT, 0);
-  wait(150);
-
-  set_val(DPAD_DOWN, 100);
-  wait(200);
-  set_val(DPAD_DOWN, 0);
-  wait(150);
-
-  set_val(INTERACTION_MENU, 100);
-  wait(400);
+  if(triggerAmmoBuy) {
+    triggerAmmoBuy = FALSE;
+    combo_run(BuyAmmo);
+  }
 }
 
 combo BuyBST {
   set_val(INTERACTION_MENU, 100);
   wait(800);
 
-  combo_run(RepeatDown4);
-
+  // Press A once
   set_val(A_BTN, 100);
   wait(150);
   set_val(A_BTN, 0);
   wait(150);
 
+  // D-Pad Up 3 times
+  set_val(DPAD_UP, 100);
+  wait(150);
+  set_val(DPAD_UP, 0);
+  wait(150);
+  set_val(DPAD_UP, 100);
+  wait(150);
+  set_val(DPAD_UP, 0);
+  wait(150);
+  set_val(DPAD_UP, 100);
+  wait(150);
+  set_val(DPAD_UP, 0);
+  wait(150);
+
+  // Press A once
+  set_val(A_BTN, 100);
+  wait(150);
+  set_val(A_BTN, 0);
+  wait(150);
+
+  // D-Pad Down once
+  set_val(DPAD_DOWN, 100);
+  wait(150);
+  set_val(DPAD_DOWN, 0);
+  wait(150);
+
+  // Press A once
+  set_val(A_BTN, 100);
+  wait(150);
+  set_val(A_BTN, 0);
+  wait(150);
+
+  // Close menu
+  set_val(INTERACTION_MENU, 100);
+  wait(400);
+}
+
+combo BuyAmmo {
+  set_val(INTERACTION_MENU, 100);
+  wait(800);
+
+  // D-Pad Down 4 times
+  set_val(DPAD_DOWN, 100);
+  wait(150);
+  set_val(DPAD_DOWN, 0);
+  wait(100);
+  set_val(DPAD_DOWN, 100);
+  wait(150);
+  set_val(DPAD_DOWN, 0);
+  wait(100);
+  set_val(DPAD_DOWN, 100);
+  wait(150);
+  set_val(DPAD_DOWN, 0);
+  wait(100);
+  set_val(DPAD_DOWN, 100);
+  wait(150);
+  set_val(DPAD_DOWN, 0);
+  wait(100);
+
+  // Press A twice
   set_val(A_BTN, 100);
   wait(100);
   set_val(A_BTN, 0);
@@ -126,6 +107,43 @@ combo BuyBST {
   set_val(A_BTN, 0);
   wait(150);
 
+  // D-Pad Left once
+  set_val(DPAD_LEFT, 100);
+  wait(200);
+  set_val(DPAD_LEFT, 0);
+  wait(150);
+
+  // D-Pad Down twice
+  set_val(DPAD_DOWN, 100);
+  wait(150);
+  set_val(DPAD_DOWN, 0);
+  wait(100);
+  set_val(DPAD_DOWN, 100);
+  wait(150);
+  set_val(DPAD_DOWN, 0);
+  wait(100);
+
+  // Press A once
+  set_val(A_BTN, 100);
+  wait(150);
+  set_val(A_BTN, 0);
+  wait(150);
+
+  // Press B three times
+  set_val(B_BTN, 100);
+  wait(150);
+  set_val(B_BTN, 0);
+  wait(100);
+  set_val(B_BTN, 100);
+  wait(150);
+  set_val(B_BTN, 0);
+  wait(100);
+  set_val(B_BTN, 100);
+  wait(150);
+  set_val(B_BTN, 0);
+  wait(100);
+
+  // Close menu
   set_val(INTERACTION_MENU, 100);
   wait(400);
 }
